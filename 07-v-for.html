@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    td{
+        width: 100px;
+        background-color: green;
+    }
+</style>
+
+<div id="app">
+
+<!--    遍历数组-->
+    <table>
+        <tr v-for="(user,i) in users">
+            <td v-text="i"></td>
+            <td>{{user.name}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.age}}</td>
+        </tr>
+    </table>
+
+    <br>
+<!--    遍历对象-->
+    <table>
+        <tr v-for="(v,k,index) in user">
+            <td>{{index}}</td>
+            <td v-text="k"></td>
+            <td>{{v}}</td>
+        </tr>
+    </table>
+
+
+<!--    遍历常量-->
+    <br>
+
+    <span v-for="a in 10">
+        {{a}},
+    </span>
+
+
+<!--    遍历字符串-->
+    <br>
+
+    <span v-for="a in 'abcdefg'">
+        {{a}},
+    </span>
+
+</div>
+
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // var let const
+    const vm = new Vue({
+        el:"#app",//element 告诉Vue它现在要控制哪里
+        data: {
+            users:[],
+            user: {name:'柳岩', gender:'女', age: 21},
+        },
+        methods:{
+            clickMe(){
+                console.log(this);
+                this.num++;
+            }
+        },
+        created(){
+            this.users = [
+                {name:'柳岩', gender:'女', age: 21},
+                {name:'有哥', gender:'男', age: 30},
+                {name:'范冰冰', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}
+            ]
+        }
+    })
+
+
+</script>
+</body>
+</html>
